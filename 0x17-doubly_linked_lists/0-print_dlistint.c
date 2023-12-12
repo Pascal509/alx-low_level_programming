@@ -2,7 +2,7 @@
 #include <stddef.h>
 #include "lists.h"
 
-size_t print_dlistint(const dlistint_t *h) 
+size_t print_dlistint(const dlistint_t *h)
 {
 	size_t count;
 
@@ -14,5 +14,5 @@ size_t print_dlistint(const dlistint_t *h)
 		count++;
 	}
 
-	return count;
+	return (count);
 }
