@@ -1,12 +1,19 @@
 #include "hash_tables.h"
 
+/**
+ * set_pair - mallocs memory space to a key/value pair to the hash table.
+ * @key: the key, a string that cannot be empty.
+ * @value: the value associated with the key, can be an empty string.
+ *
+ * Return: pointer to the new node.
+ */
+
 hash_node_t *set_pair(const char *key, const char *value)
 {
 	hash_node_t *new_node = malloc(sizeof(hash_node_t));
 
 	if (new_node == NULL)
 		return (0);
-	printf("set_pair created\n");
 	new_node->key = malloc(strlen(key) + 1);
 	if (new_node->key == NULL)
 		return (0);
@@ -15,8 +22,6 @@ hash_node_t *set_pair(const char *key, const char *value)
 		return (0);
 	strcpy(new_node->key, key);
 	strcpy(new_node->value, value);
-	if (strcmp(new_node->key, key) == 0)
-		printf("set_pair succeeded\n");
 	return (new_node);
 }
 
@@ -39,12 +44,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node = ht->array[index];
 	if (new_node == NULL)
 	{
-		printf("calling set_pair before while loop\n");
+		/** printf("calling set_pair before while loop\n");**/
 		new_node = set_pair(key, value);
 		new_node->next = NULL;
 		ht->array[index] = new_node;
 		if (strcmp(ht->array[index]->key, key) == 0)
-			printf("Key and value assigned\n");
+			/** printf("Key and value assigned\n");**/
 		return (1);
 	}
 	while (new_node != NULL)
